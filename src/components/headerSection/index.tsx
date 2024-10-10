@@ -4,8 +4,8 @@ import vlogo from "../../../public/vlogo.png";
 
 const HeaderSection: React.FC = () => {
   return (
-    <header className="bg-gradient-to-r from-purple-800 via-pink-500 to-red-500 shadow-md h-[50px]">
-      <nav className="container flex items-center justify-between pt-2 pb-2">
+    <header className="bg-gradient-to-r from-purple-800 via-pink-500 to-red-500 shadow-md h-[50px] pr-10 ">
+      <nav className="container flex items-center justify-between pt-2 pb-2 ">
         <div className="flex items-center -mt-2 ml-7">
           <Image
             src={vlogo}
@@ -17,7 +17,7 @@ const HeaderSection: React.FC = () => {
           </h1>
         </div>
 
-        <div className="justify-end gap-10 hidden md:flex -mr-16">
+        <div className="justify-end gap-10 hidden md:flex ">
           <Link href="/">
             <div className="text-white text-sm hover:text-pink-300 transition duration-300 ease-in-out">
               Home
