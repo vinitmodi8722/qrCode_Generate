@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center   bg-gray-100 p-8">
+    <div className="h-[85vh] flex flex-col items-center justify-center   bg-gray-100 p-8">
       <div className="absolute top-[15%]">
         <h1 className="text-4xl flex justify-center font-bold text-cyan-700 mb-6">
           About Our QR Scanner
