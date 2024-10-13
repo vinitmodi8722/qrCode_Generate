@@ -22,7 +22,7 @@ const Menupage = () => {
           <Image
             src="/arrow.png"
             alt="logo"
-            height={50}
+            height={60}
             width={50}
             className="mr-4 rotate-[8deg] mt-3"
           />
