@@ -8,31 +8,27 @@ const MakeQrSections: React.FC = () => {
   const [error, setError] = useState<string>("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
-    if (e.target.value === "") {
-      setError("");
-    }
+    const value = e.target.value;
+    setText(value);
+    validateInput(value); // Validate on input change
   };
 
   const handleGenerateQr = () => {
-    let valid = true;
+    if (!error) {
+      setQrCode(text);
+      setText(""); // Clear input after generating QR
+    }
+  };
 
-    if (inputType === "text" && text.trim() === "") {
-      valid = false;
+  const validateInput = (value: string) => {
+    if (inputType === "text" && value.trim() === "") {
       setError("Please enter some text.");
-    } else if (inputType === "url" && !isValidUrl(text)) {
-      valid = false;
+    } else if (inputType === "url" && !isValidUrl(value)) {
       setError("Please enter a valid URL.");
-    } else if (inputType === "phone" && !isValidPhoneNumber(text)) {
-      valid = false;
+    } else if (inputType === "phone" && !isValidPhoneNumber(value)) {
       setError("Please enter a valid phone number.");
     } else {
       setError("");
-    }
-
-    if (valid) {
-      setQrCode(text);
-      setText("");
     }
   };
 
@@ -42,7 +38,7 @@ const MakeQrSections: React.FC = () => {
   };
 
   const isValidPhoneNumber = (phone: string) => {
-    const phonePattern = /^\+?[1-9]\d{1,14}$/;
+    const phonePattern = /^\+?[1-9]\d{9,10}$/;
     return phonePattern.test(phone);
   };
 
@@ -89,6 +85,7 @@ const MakeQrSections: React.FC = () => {
             <button
               onClick={handleGenerateQr}
               className="bg-purple-400 text-white font-bold py-3 px-4 rounded hover:bg-pink-500 hover:scale-105 transition duration-300 ease-in-out transform focus:ring-4 focus:ring-yellow-500 focus:ring-opacity-50 focus:outline-none hover:shadow-lg"
+              disabled={!!error || !text}
             >
               Generate QR Code
             </button>
